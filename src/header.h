@@ -5,5 +5,6 @@
 using namespace std;
 
 void Chess(char pole[][9]);
+void Oprkoordinat(string xod, int k[2][2]);
 
 #endif
