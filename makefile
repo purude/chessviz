@@ -8,7 +8,7 @@ all: ./bin/source.exe
 -include build/src/*.d
 
 ./bin/source.exe: ./build/main.o ./build/draw.o ./build/source.o
-$(g) $(CFLAGS) -o ./build/source ./build/main.o ./build/source.o ./build/draw.o
+$(g) $(CFLAGS) -o ./bin/source ./build/main.o ./build/source.o ./build/draw.o
 
 ./build/main.o: ./src/main.cpp ./src/header.h
 $(g) $(CFLAGS) -o build/main.o -c src/main.cpp
