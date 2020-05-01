@@ -4,7 +4,6 @@ using namespace std;
 
 int main()
 {
-    setlocale(LC_ALL, "Rus");
     char pole[9][9]
             = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
                {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},

@@ -5,7 +5,7 @@ using namespace std;
 
 void OprKoordinat(string xod, int k[][2])
 {
-    cout << endl << "Введите координаты для хода: ";
+    cout << endl << "Your move: ";
     cin >> xod;
 hod:
     switch (xod[0]) {
@@ -34,7 +34,7 @@ hod:
         k[0][0] = 8;
         break;
     default:
-        cout << "Некорректный ввод!";
+        cout << "Uncorrect! Repeat please!";
         goto hod;
     }
     switch (xod[1]) {
@@ -63,11 +63,11 @@ hod:
         k[0][1] = 0;
         break;
     default:
-        cout << "Некорректный ввод!";
+        cout << "Uncorrect! Repeat please";
         goto hod;
     }
     if (xod[2] != '-') {
-        cout << "Некорректный ввод!";
+        cout << "Uncorrect! Repeat please";
         goto hod;
     }
     switch (xod[3]) {
@@ -96,7 +96,7 @@ hod:
         k[1][0] = 8;
         break;
     default:
-        cout << "Некорректный ввод!";
+        cout << "Uncorrect! Repeat please";
         goto hod;
     }
     switch (xod[4]) {
@@ -125,7 +125,7 @@ hod:
         k[1][1] = 0;
         break;
     default:
-        cout << "Некорректный ввод!";
+        cout << "Uncorrect! Repeat please";
         goto hod;
     }
 }
