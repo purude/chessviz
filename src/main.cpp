@@ -21,7 +21,7 @@ int main()
     while (true) {
         OprKoordinat(xod, k);
         if ((pole[k[0][1]][k[0][0]] == 'P') || (pole[k[0][1]][k[0][0]] == 'p'))
-            HodPeshki(pole, k);
+            MovePeshki(pole, k);
         cout << endl << endl;
         Chess(pole);
     }

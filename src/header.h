@@ -6,6 +6,6 @@ using namespace std;
 
 void Chess(char pole[][9]);
 void OprKoordinat(string xod, int k[2][2]);
-void HodPeshki(char pole[][9], int k[2][2]);
+void MovePeshki(char pole[][9], int k[2][2]);
 
 #endif

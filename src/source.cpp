@@ -130,7 +130,7 @@ hod:
     }
 }
 
-void HodPeshki(char pole[9][9], int k[][2])
+void MovePeshki(char pole[9][9], int k[][2])
 {
     char temp;
     if (k[0][0] == k[1][0])
