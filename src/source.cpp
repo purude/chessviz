@@ -1,4 +1,9 @@
-int OprKoordinat(string xod, int k[2][2])
+#include "header.h"
+#include <iostream>
+
+using namespace std;
+
+void OprKoordinat(string xod, int k[][2])
 {
     cout << endl << "Введите координаты для хода: ";
     cin >> xod;
@@ -125,7 +130,7 @@ hod:
     }
 }
 
-void HodPeshki(char pole[9][9], int k[2][2])
+void HodPeshki(char pole[9][9], int k[][2])
 {
     char temp;
     if (k[0][0] == k[1][0])

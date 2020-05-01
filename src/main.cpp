@@ -1,18 +1,10 @@
+#include "header.h"
 #include <iostream>
-
 using namespace std;
 
-void Cheess(char pole[9][9])
-{
-    for (int i = 0; i < 9; i++) {
-        for (int j = 0; j < 9; j++) {
-            cout << pole[i][j] << " ";
-        }
-        cout << endl;
-    }
-}
 int main()
 {
+    setlocale(LC_ALL, "Rus");
     char pole[9][9]
             = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
                {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
@@ -24,7 +16,15 @@ int main()
                {'1', 'R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'},
                {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'}};
 
-    Cheess(pole);
-
+    Chess(pole);
+    int k[2][2];
+    string xod;
+    while (true) {
+        OprKoordinat(xod, k);
+        if ((pole[k[0][1]][k[0][0]] == 'P') || (pole[k[0][1]][k[0][0]] == 'p'))
+            HodPeshki(pole, k);
+        cout << endl << endl;
+        Chess(pole);
+    }
     return 0;
 }
