@@ -5,7 +5,7 @@ CFLAGS = -Wall -Werror -MP -MMD
 
 all: 		./bin/source.exe
 
--include build/src/*.d
+-include build/*.d
 
 ./bin/source.exe: ./build/main.o ./build/draw.o ./build/source.o
 									$(g) $(CFLAGS) -o ./bin/source ./build/main.o ./build/source.o ./build/draw.o
