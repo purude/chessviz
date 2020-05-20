@@ -1,26 +1,45 @@
+.PHONY: clean run all test
+
 g = g++
-CFLAGS = -Wall -Werror -MP -MMD
+CFLAGS = -c -Wall -Werror
 
-.PHONY: clean run all
 
-all: 		./bin/source.exe
+all: bin/source
 
--include build/*.d
+bin/source: build/src/main.o build/src/source.o
+		$(g) $^ -o $@
 
-./bin/source.exe: ./build/main.o ./build/draw.o ./build/source.o
-		$(g) $(CFLAGS) -o ./bin/source ./build/main.o ./build/source.o ./build/draw.o
+build/src/main.o: src/main.cpp
+		$(g) $(CFLAGS) $^ -o $@
 
-./build/main.o: ./src/main.cpp ./src/header.h
-		$(g) $(CFLAGS) -o build/main.o -c src/main.cpp
+build/src/source.o: src/source.cpp
+		$(g) $(CFLAGS) $^ -o $@
 
-./build/draw.o: ./src/draw.cpp ./src/header.h
-		$(g) $(CFLAGS) -o ./build/draw.o -c src/draw.cpp
+GTEST_DIR = thirdparty/googletest
 
-./build/source.o: ./src/source.cpp ./src/header.h
-		$(g) $(CFLAGS) -o ./build/source.o -c ./src/source.cpp
+test: testlib bin/source-test
 
-clean:
-		rm -rf build/*.o build/*.d
+testlib:
+	g++ -std=c++11 -isystem ${GTEST_DIR}/include -I${GTEST_DIR} \
+    -pthread -c ${GTEST_DIR}/src/gtest-all.cc -o build/test/gtest-all.o
+	ar -rv build/test/libgtest.a build/test/gtest-all.o
+
+bin/source-test: build/test/main.o build/src/source.o
+	g++ -std=c++11 -isystem ${GTEST_DIR}/include -pthread $^ \
+	build/test/libgtest.a -o $@
+
+build/test/main.o:
+	$(g) -std=c++11 $(CFLAGS) test/main.cpp -I $(GTEST_DIR)/include -o $@
+
 
 run:
-		./bin/source
+		bin/source
+
+runtest:
+		bin/source-test
+
+clean:
+		rm -rf build/src/*.o
+
+cleantest:
+		rm build/test/*.o
