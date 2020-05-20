@@ -141,18 +141,53 @@ void OprKoordinat(string xod, int k[][2])
     }
 }
 
-void MovePeshki(char pole[9][9], int k[][2])
+void MoveAll(char pole[9][9], int k[][2])
 {
-    char temp;
-    if (k[0][0] == k[1][0])
-        if (((pole[k[0][1]][k[0][0]] == 'P')
-             && ((k[1][1] == k[0][1] - 1) || (k[1][1] == k[0][1] - 2)))
-            || ((pole[k[0][1]][k[0][0]] == 'p')
-                && ((k[1][1] == k[0][1] + 1) || (k[1][1] == (k[0][1] + 2))))) {
-            temp = pole[k[0][1]][k[0][0]];
-            pole[k[0][1]][k[0][0]] = pole[k[1][1]][k[1][0]];
-            pole[k[1][1]][k[1][0]] = temp;
+    int flag = MoveCheck(*team, k, pole);
+    if (flag == 1) {
+        if ((pole[k[1][1]][k[1][0]] == 'k')
+            || (pole[k[1][1]][k[1][0]] == 'K')) {
+            cout << "\n You win!";
+            exit(0);
         }
+        pole[k[1][1]][k[1][0]] = pole[k[0][1]][k[0][0]];
+        pole[k[0][1]][k[0][0]] = ' ';
+        switch (*team) {
+        case 0:
+            if ((pole[k[1][1]][k[1][0]] == 'P') && (x2 == 0)) {
+                char temp = ' ';
+                while (temp == ' ') {
+                    cout << endl << "Move your pawn: ";
+                    cin >> temp;
+                    if ((temp != 'R') && (temp != 'N') && (temp != 'B')
+                        && (temp != 'Q')) {
+                        temp = ' ';
+                    }
+                }
+                pole[k[1][1]][k[1][0]] = temp;
+            }
+            break;
+        case 1:
+            if ((pole[k[1][1]][k[1][0]] == 'p') && (k[1][1] == 7)) {
+                char temp = ' ';
+                while (temp == ' ') {
+                    cout << endl << "Move your pawn: ";
+                    cin >> temp;
+                    if ((temp != 'r') && (temp != 'n') && (temp != 'b')
+                        && (temp != 'q')) {
+                        temp = ' ';
+                    }
+                }
+                pole[k[1][1]][k[1][0]] = temp;
+            }
+            break;
+        }
+        *team = 1 - *team;
+    } else {
+        cout << "\nIncorrect!\n";
+    }
+    cout << endl;
+    cout << endl;
 }
 
 bool friendly(int side, int k[][2], char pole[][9])
@@ -165,7 +200,7 @@ bool friendly(int side, int k[][2], char pole[][9])
             || (pole[k[1][1]][k[1][0]] == 'B')
             || (pole[k[1][1]][k[1][0]] == 'Q')
             || (pole[k[1][1]][k[1][0]] == 'K')) {
-            cout << "\n ERROR\n";
+            cout << "\nIncorrect!\n";
 
             flag = false;
         }
@@ -176,7 +211,7 @@ bool friendly(int side, int k[][2], char pole[][9])
             || (pole[k[1][1]][k[1][0]] == 'b')
             || (pole[k[1][1]][k[1][0]] == 'q')
             || (pole[k[1][1]][k[1][0]] == 'k')) {
-            cout << "\ERROR\n";
+            cout << "\Incorrect!\n";
             ;
             flag = false;
         }
