@@ -154,3 +154,33 @@ void MovePeshki(char pole[9][9], int k[][2])
             pole[k[1][1]][k[1][0]] = temp;
         }
 }
+
+bool friendly(int side, int k[][2], char pole[][9])
+{
+    bool flag = true;
+    switch (side) {
+    case 0:
+        if ((pole[k[1][1]][k[1][0]] == 'P') || (pole[k[1][1]][k[1][0]] == 'R')
+            || (pole[k[1][1]][k[1][0]] == 'N')
+            || (pole[k[1][1]][k[1][0]] == 'B')
+            || (pole[k[1][1]][k[1][0]] == 'Q')
+            || (pole[k[1][1]][k[1][0]] == 'K')) {
+            cout << "\n ERROR\n";
+
+            flag = false;
+        }
+        break;
+    case 1:
+        if ((pole[k[1][1]][k[1][0]] == 'p') || (pole[k[1][1]][k[1][0]] == 'r')
+            || (pole[k[1][1]][k[1][0]] == 'n')
+            || (pole[k[1][1]][k[1][0]] == 'b')
+            || (pole[k[1][1]][k[1][0]] == 'q')
+            || (pole[k[1][1]][k[1][0]] == 'k')) {
+            cout << "\ERROR\n";
+            ;
+            flag = false;
+        }
+        break;
+    }
+    return flag;
+}
