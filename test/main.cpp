@@ -16,15 +16,38 @@ char pole[9][9]
 TEST(Up_peshka, Correct_P_forward1cell)
 {
     int array[2][2];
-    array[0][0] = 6;
+    array[0][1] = 6;
+    array[1][1] = 5;
     array[0][0] = 5;
-    array[0][0] = 5;
-    array[0][0] = 5;
+    array[1][0] = 5;
     int result = MoveCheck(0, array, pole);
     int expected = 1;
     EXPECT_EQ(expected, result);
 }
-
+TEST(Up_peshka, Correct_P_forward2cell)
+{
+    int array[2][2];
+    array[0][1] = 6;
+    array[1][1] = 5;
+    array[0][0] = 4;
+    array[1][0] = 5;
+    int result = MoveCheck(0, array, pole);
+    int expected = 1;
+    EXPECT_EQ(expected, result);
+}
+TEST(Up_peshka, Correct_P_attack)
+{
+    int array[2][2];
+    array[0][1] = 6;
+    array[1][1] = 4;
+    array[0][0] = 5;
+    array[1][0] = 5;
+    pole[5][5] = 'r';
+    int result = MoveCheck(0, array, pole);
+    int expected = 1;
+    pole[5][5] = ' ';
+    EXPECT_EQ(expected, result);
+}
 int main(int argc, char** argv)
 {
     ::testing::InitGoogleTest(&argc, argv);
