@@ -17,7 +17,7 @@ int main()
     Chess(pole);
     while (true) {
         OprKoordinat(k);
-        MoveAll(pole, k);
+        MoveAll(pole, k, &team);
         Chess(pole);
     }
     return 0;

@@ -16,8 +16,9 @@ void Chess(char pole[][9])
 
 void OprKoordinat(int k[][2])
 {
-    int Incorrect !Check = 1;
-    while (Incorrect !Check) {
+    int ErrorCheck = 1;
+    string xod;
+    while (ErrorCheck) {
         cout << endl << "Your move: ";
         cin >> xod;
         switch (xod[0]) {
@@ -47,10 +48,10 @@ void OprKoordinat(int k[][2])
             break;
         default:
             cout << "Incorrect! Repeat please!";
-            Incorrect !Check = 0;
+            ErrorCheck = 0;
         }
 
-        if (Incorrect !Check == 1)
+        if (ErrorCheck == 1)
             switch (xod[1]) {
             case '1':
                 k[0][1] = 7;
@@ -78,16 +79,16 @@ void OprKoordinat(int k[][2])
                 break;
             default:
                 cout << "Incorrect! Repeat please";
-                Incorrect !Check = 0;
+                ErrorCheck = 0;
             }
 
-        if (Incorrect !Check == 1)
+        if (ErrorCheck == 1)
             if (xod[2] != '-') {
                 cout << "Incorrect! Repeat please";
-                Incorrect !Check = 0;
+                ErrorCheck = 0;
             }
 
-        if (Incorrect !Check == 1)
+        if (ErrorCheck == 1)
             switch (xod[3]) {
             case 'a':
                 k[1][0] = 1;
@@ -115,10 +116,10 @@ void OprKoordinat(int k[][2])
                 break;
             default:
                 cout << "Incorrect! Repeat please";
-                Incorrect !Check = 0;
+                ErrorCheck = 0;
             }
 
-        if (Incorrect !Check == 1)
+        if (ErrorCheck == 1)
             switch (xod[4]) {
             case '1':
                 k[1][1] = 7;
@@ -146,13 +147,13 @@ void OprKoordinat(int k[][2])
                 break;
             default:
                 cout << "Incorrect! Repeat please";
-                Incorrect !Check = 0;
+                ErrorCheck = 0;
             }
-        Incorrect !Check = 0;
+        ErrorCheck = 0;
     }
 }
 
-void MoveAll(char pole[9][9], int k[][2])
+void MoveAll(char pole[9][9], int k[][2], int* team)
 {
     int flag = MoveCheck(*team, k, pole);
     if (flag == 1) {
@@ -222,7 +223,7 @@ bool friendly(int side, int k[][2], char pole[][9])
             || (pole[k[1][1]][k[1][0]] == 'b')
             || (pole[k[1][1]][k[1][0]] == 'q')
             || (pole[k[1][1]][k[1][0]] == 'k')) {
-            cout << "\Incorrect!\n";
+            cout << "\nIncorrect!\n";
             ;
             flag = false;
         }
@@ -244,7 +245,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
             cout << "\nIncorrect!\n";
             return 0;
         case 'P':
-            if (friendly(team, k[1][1], k[1][0], pole) == 1) {
+            if (friendly(team, k, pole) == 1) {
                 if ((k[0][0] == k[1][0]) && (k[0][1] - k[1][1] == 1)
                     && (pole[k[1][1]][k[1][0]] == ' '))
                     flag = 1;
@@ -263,7 +264,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
             }
             break;
         case 'R':
-            if (friendly(team, k[1][1], k[1][1], pole) == 1) {
+            if (friendly(team, k, pole) == 1) {
                 if ((k[0][0] == k[1][0]) && (k[0][1] != k[1][1])) {
                     if (k[0][1] > k[1][1]) {
                         for (int i = k[0][1] - 1; i > k[1][1]; i--) {
@@ -307,7 +308,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
             }
             break;
         case 'N':
-            if (friendly(team, k[1][1], k[1][0], pole) == 1) {
+            if (friendly(team, k, pole) == 1) {
                 if (((k[1][1] == k[0][1] - 2) && (k[1][0] == k[0][0] + 1))
                     || ((k[1][1] == k[0][1] - 2) && (k[1][0] == k[0][0] - 1))
                     || ((k[1][1] == k[0][1] + 2) && (k[1][0] == k[0][0] + 1))
@@ -321,7 +322,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
             }
             break;
         case 'B':
-            if (friendly(team, k[1][1], k[1][0], pole) == 1) {
+            if (friendly(team, k, pole) == 1) {
                 if ((k[1][0] < k[0][0]) && (k[1][1] < k[0][1])) {
                     if (k[0][0] - k[1][0] == k[0][1] - k[1][1]) {
                         for (int i = k[0][0] - 1, v = k[0][1] - 1;
@@ -377,7 +378,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
             }
             break;
         case 'Q':
-            if (friendly(team, k[1][1], k[1][0], pole) == 1) {
+            if (friendly(team, k, pole) == 1) {
                 if ((k[0][0] == k[1][0]) && (k[0][1] != k[1][1])) {
                     if (k[0][1] > k[1][1]) {
                         for (int i = k[0][1] - 1; i > k[1][1]; i--) {
@@ -475,7 +476,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
             break;
 
         case 'K':
-            if (friendly(team, k[1][1], k[1][0], pole) == 1) {
+            if (friendly(team, k, pole) == 1) {
                 flag = 1;
             }
             break;
@@ -490,7 +491,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
             cout << "\nIncorrect!\n";
             return 0;
         case 'p':
-            if (friendly(team, k[1][1], k[1][0], pole) == 1) {
+            if (friendly(team, k, pole) == 1) {
                 if ((k[0][0] == k[1][0]) && (k[1][1] - k[0][1] == 1)
                     && (pole[k[1][1]][k[1][0]] == ' '))
                     flag = 1;
@@ -509,7 +510,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
             }
             break;
         case 'r':
-            if (friendly(team, k[1][1], k[1][0], pole) == 1) {
+            if (friendly(team, k, pole) == 1) {
                 if ((k[0][0] == k[1][0]) && (k[0][1] != k[1][1])) {
                     if (k[0][1] > k[1][1]) {
                         for (int i = k[0][1] - 1; i > k[1][1]; i--) {
@@ -553,7 +554,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
             }
             break;
         case 'n':
-            if (friendly(team, k[1][1], k[1][0], pole) == 1) {
+            if (friendly(team, k, pole) == 1) {
                 if (((k[1][1] == k[0][1] - 2) && (k[1][0] == k[0][0] + 1))
                     || ((k[1][1] == k[0][1] - 2) && (k[1][0] == k[0][0] - 1))
                     || ((k[1][1] == k[0][1] + 2) && (k[1][0] == k[0][0] + 1))
@@ -567,7 +568,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
             }
             break;
         case 'b':
-            if (friendly(team, k[1][1], k[1][0], pole) == 1) {
+            if (friendly(team, k, pole) == 1) {
                 if ((k[1][0] < k[0][0]) && (k[1][1] < k[0][1])) {
                     if (k[0][0] - k[1][0] == k[0][1] - k[1][1]) {
                         for (int i = k[0][0] - 1, v = k[0][1] - 1;
@@ -623,7 +624,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
             }
             break;
         case 'q':
-            if (friendly(team, k[1][1], k[1][0], pole) == 1) {
+            if (friendly(team, k, pole) == 1) {
                 if ((k[0][0] == k[1][0]) && (k[0][1] != k[1][1])) {
                     if (k[0][1] > k[1][1]) {
                         for (int i = k[0][1] - 1; i > k[1][1]; i--) {
@@ -670,7 +671,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
                              i > k[1][0] && v > k[1][1];
                              i--, v--) {
                             if (pole[v][i] != ' ') {
-                                cout << "\n Incorrect!\n";
+                                cout << "\nIncorrect!\n";
                                 return 0;
                             }
                         }
@@ -683,7 +684,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
                              i > k[1][0] && v < k[1][1];
                              i--, v++) {
                             if (pole[v][i] != ' ') {
-                                cout << "\Incorrect!\n";
+                                cout << "\nIncorrect!\n";
                                 return 0;
                             }
                         }
@@ -719,7 +720,7 @@ int MoveCheck(int team, int k[][2], char pole[][9])
             }
             break;
         case 'k':
-            if (friendly(team, k[1][1], k[1][0], pole) == 1) {
+            if (friendly(team, k, pole) == 1) {
                 flag = 1;
             }
             break;
