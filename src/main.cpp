@@ -2,6 +2,7 @@
 
 int main()
 {
+    int k[2][2], team = 0;
     char pole[9][9]
             = {{'8', 'r', 'n', 'b', 'q', 'k', 'b', 'n', 'r'},
                {'7', 'p', 'p', 'p', 'p', 'p', 'p', 'p', 'p'},
@@ -14,10 +15,8 @@ int main()
                {' ', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'}};
 
     Chess(pole);
-    int k[2][2], team = 0;
-    string xod;
     while (true) {
-        OprKoordinat(xod, k);
+        OprKoordinat(k);
         MoveAll(pole, k);
         Chess(pole);
     }

@@ -3,7 +3,18 @@
 
 using namespace std;
 
-void OprKoordinat(string xod, int k[][2])
+void Chess(char pole[][9])
+{
+    cout << endl;
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            cout << pole[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+void OprKoordinat(int k[][2])
 {
     int Incorrect !Check = 1;
     while (Incorrect !Check) {
