@@ -21,6 +21,10 @@ void OprKoordinat(int k[][2])
     while (ErrorCheck) {
         cout << endl << "Your move: ";
         cin >> xod;
+        if (xod == "exit") {
+            cout << "\nExit the programm";
+            exit(0);
+        }
         switch (xod[0]) {
         case 'a':
             k[0][0] = 1;
