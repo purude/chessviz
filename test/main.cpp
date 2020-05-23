@@ -109,7 +109,32 @@ TEST(Up_Rook, Correct_R_right)
     pole[6][8] = 'P';
     EXPECT_EQ(expected, result);
 }
-
+TEST(Down_Rook, Correct_r_left)
+{
+    int array[2][2];
+    array[0][1] = 0;
+    array[0][0] = 1;
+    array[1][1] = 2;
+    array[1][0] = 1;
+    pole[1][1] = ' ';
+    int result = move_check(1, array, pole);
+    int expected = 1;
+    pole[1][2] = 'p';
+    EXPECT_EQ(expected, result);
+}
+TEST(Down_Rook, Correct_r_right)
+{
+    int array[2][2];
+    array[0][1] = 0;
+    array[0][0] = 8;
+    array[1][1] = 2;
+    array[1][0] = 8;
+    pole[1][8] = ' ';
+    int result = move_check(1, array, pole);
+    int expected = 1;
+    pole[1][8] = 'P';
+    EXPECT_EQ(expected, result);
+}
 int main(int argc, char** argv)
 {
     ::testing::InitGoogleTest(&argc, argv);
