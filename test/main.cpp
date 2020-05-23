@@ -234,6 +234,61 @@ TEST(Down_King, Correct_k)
     pole[1][5] = 'p';
     EXPECT_EQ(expected, result);
 }
+
+TEST(Up_Bishop, Correct_B_left)
+{
+    int array[2][2];
+    array[0][1] = 7;
+    array[0][0] = 3;
+    array[1][1] = 5;
+    array[1][0] = 5;
+    pole[6][4] = ' ';
+    int result = MoveCheck(0, array, pole);
+    int expected = 1;
+    pole[6][4] = 'P';
+    EXPECT_EQ(expected, result);
+}
+TEST(Up_Bishop, Correct_B_right)
+{
+    int array[2][2];
+    array[0][1] = 7;
+    array[0][0] = 6;
+    array[1][1] = 5;
+    array[1][0] = 4;
+    pole[6][5] = ' ';
+    int i1 = 7, j1 = 6, i2 = 5, j2 = 4;
+    int result = MoveCheck(0, array, pole);
+    int expected = 1;
+    pole[6][5] = 'P';
+    EXPECT_EQ(expected, result);
+}
+TEST(Down_Bishop, Correct_b_left)
+{
+    int array[2][2];
+    array[0][1] = 0;
+    array[0][0] = 3;
+    array[1][1] = 2;
+    array[1][0] = 5;
+    pole[1][4] = ' ';
+    int result = MoveCheck(1, array, pole);
+    int expected = 1;
+    pole[1][4] = 'p';
+    EXPECT_EQ(expected, result);
+}
+TEST(Down_Bishop, Correct_b_right)
+{
+    int array[2][2];
+    array[0][1] = 0;
+    array[0][0] = 6;
+    array[1][1] = 2;
+    array[1][0] = 4;
+    pole[1][5] = ' ';
+    int result = MoveCheck(1, array, pole);
+    int expected = 1;
+    pole[1][5] = 'p';
+    EXPECT_EQ(expected, result);
+}
+
 int main(int argc, char** argv)
 {
     ::testing::InitGoogleTest(&argc, argv);
