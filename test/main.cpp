@@ -41,6 +41,7 @@ TEST(Down_peshka, Correct_p_attack)
     array[0][0] = 5;
     array[1][1] = 2;
     array[1][0] = 4;
+    pole[2][4] = 'R';
     int result = MoveCheck(1, array, pole);
     int expected = 1;
     pole[2][4] = 'R';
