@@ -179,6 +179,33 @@ TEST(Down_Horse, Correct_h_right)
     int expected = 1;
     EXPECT_EQ(expected, result);
 }
+TEST(Up_Queen, Correct_Q)
+{
+    int array[2][2];
+    array[0][1] = 7;
+    array[0][0] = 4;
+    array[1][1] = 5;
+    array[1][0] = 4;
+    pole[6][4] = ' ';
+    int result = MoveCheck(0, array, pole);
+    int expected = 1;
+    pole[6][4] = 'P';
+    EXPECT_EQ(expected, result);
+}
+TEST(Down_Queen, Correct_q)
+{
+    int array[2][2];
+    array[0][1] = 0;
+    array[0][0] = 4;
+    array[1][1] = 2;
+    array[1][0] = 4;
+    pole[1][4] = ' ';
+    int i1 = 0, j1 = 4, i2 = 2, j2 = 4;
+    int result = MoveCheck(1, array, pole);
+    int expected = 1;
+    pole[1][4] = 'p';
+    EXPECT_EQ(expected, result);
+}
 int main(int argc, char** argv)
 {
     ::testing::InitGoogleTest(&argc, argv);
