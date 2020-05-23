@@ -10,6 +10,8 @@
 using namespace std;
 
 void Chess(char pole[][9]);
+void OprKoordinat(string xod, int k[2][2]);
+void MoveAll(char pole[][9], int k[2][2]);
 void OprKoordinat(int k[2][2]);
 void MoveAll(char pole[][9], int k[2][2], int* team);
 int MoveCheck(int team, int k[][2], char pole[][9]);
