@@ -104,7 +104,7 @@ TEST(Up_Rook, Correct_R_right)
     array[1][1] = 5;
     array[1][0] = 8;
     pole[6][8] = ' ';
-    int result = move_check(0, array, pole);
+    int result = MoveCheck(0, array, pole);
     int expected = 1;
     pole[6][8] = 'P';
     EXPECT_EQ(expected, result);
@@ -117,7 +117,7 @@ TEST(Down_Rook, Correct_r_left)
     array[1][1] = 2;
     array[1][0] = 1;
     pole[1][1] = ' ';
-    int result = move_check(1, array, pole);
+    int result = MoveCheck(1, array, pole);
     int expected = 1;
     pole[1][2] = 'p';
     EXPECT_EQ(expected, result);
@@ -130,9 +130,53 @@ TEST(Down_Rook, Correct_r_right)
     array[1][1] = 2;
     array[1][0] = 8;
     pole[1][8] = ' ';
-    int result = move_check(1, array, pole);
+    int result = MoveCheck(1, array, pole);
     int expected = 1;
     pole[1][8] = 'P';
+    EXPECT_EQ(expected, result);
+}
+TEST(Up_Horse, Correct_H_left)
+{
+    int array[2][2];
+    array[0][1] = 7;
+    array[0][0] = 2;
+    array[1][1] = 5;
+    array[1][0] = 3;
+    int result = MoveCheck(0, array, pole);
+    int expected = 1;
+    EXPECT_EQ(expected, result);
+}
+TEST(Up_Horse, Correct_H_right)
+{
+    int array[2][2];
+    array[0][1] = 7;
+    array[0][0] = 7;
+    array[1][1] = 5;
+    array[1][0] = 6;
+    int result = MoveCheck(0, array, pole);
+    int expected = 1;
+    EXPECT_EQ(expected, result);
+}
+TEST(Down_Horse, Correct_h_left)
+{
+    int array[2][2];
+    array[0][1] = 0;
+    array[0][0] = 2;
+    array[1][1] = 2;
+    array[1][0] = 3;
+    int result = MoveCheck(1, array, pole);
+    int expected = 1;
+    EXPECT_EQ(expected, result);
+}
+TEST(Down_Horse, Correct_h_right)
+{
+    int array[2][2];
+    array[0][1] = 0;
+    array[0][0] = 7;
+    array[1][1] = 2;
+    array[1][0] = 6;
+    int result = MoveCheck(1, array, pole);
+    int expected = 1;
     EXPECT_EQ(expected, result);
 }
 int main(int argc, char** argv)
