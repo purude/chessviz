@@ -22,7 +22,7 @@ void OprKoordinat(int k[][2])
         cout << endl << "Your move: ";
         cin >> xod;
         if (xod == "exit") {
-            cout << "\nExit the programm";
+            cout << "\nExit the programm\n\n";
             exit(0);
         }
         switch (xod[0]) {
