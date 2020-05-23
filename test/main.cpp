@@ -19,7 +19,8 @@ TEST(Down_peshka, Correct_p_forward1cell)
     array[0][0] = 5;
     array[1][1] = 2;
     array[1][0] = 5;
-    int result = MoveCheck(1, array, pole) int expected = 1;
+    int result = MoveCheck(1, array, pole);
+    int expected = 1;
     EXPECT_EQ(expected, result);
 }
 TEST(Down_peshka, Correct_p_forward2cell)
@@ -199,7 +200,6 @@ TEST(Down_Queen, Correct_q)
     array[1][1] = 2;
     array[1][0] = 4;
     pole[1][4] = ' ';
-    int i1 = 0, j1 = 4, i2 = 2, j2 = 4;
     int result = MoveCheck(1, array, pole);
     int expected = 1;
     pole[1][4] = 'p';
@@ -213,7 +213,6 @@ TEST(Up_King, Correct_K)
     array[1][1] = 6;
     array[1][0] = 5;
     pole[6][5] = ' ';
-    int i1 = 7, j1 = 5, i2 = 6, j2 = 5;
     int result = MoveCheck(0, array, pole);
     int expected = 1;
     pole[6][5] = 'P';
@@ -227,7 +226,6 @@ TEST(Down_King, Correct_k)
     array[1][1] = 1;
     array[1][0] = 5;
     pole[1][5] = ' ';
-    int i1 = 0, j1 = 5, i2 = 1, j2 = 5;
     int result = MoveCheck(1, array, pole);
     int expected = 1;
     pole[1][5] = 'p';
@@ -255,7 +253,6 @@ TEST(Up_Bishop, Correct_B_right)
     array[1][1] = 5;
     array[1][0] = 4;
     pole[6][5] = ' ';
-    int i1 = 7, j1 = 6, i2 = 5, j2 = 4;
     int result = MoveCheck(0, array, pole);
     int expected = 1;
     pole[6][5] = 'P';
